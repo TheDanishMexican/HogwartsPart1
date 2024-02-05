@@ -63,7 +63,10 @@ public class Application {
 
         Course potionsSixthYear = new Course(potions, horaceSlughorn, listOfHogwartsStudents, materialsForPotions);
 
-        System.out.println(potionsSixthYear);
+        YearGroup year91 = new YearGroup(1991, LocalDate.of(1991, 1, 1), listOfHogwartsStudents);
+
+//        System.out.println(potionsSixthYear);
+        System.out.println(year91);
 
     }
 
