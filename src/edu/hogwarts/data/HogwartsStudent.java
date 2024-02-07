@@ -1,6 +1,7 @@
-package edu.hogwarts;
+package edu.hogwarts.data;
 
-import java.util.Arrays;
+import edu.generic.Student;
+
 import java.util.ArrayList;
 
 public class HogwartsStudent extends Student implements HogwartsPerson {
@@ -53,14 +54,10 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
         String teamsInfo = "Teams: " + teams.toString();
         String name = "Name: " + getFirstName() + " " + getLastName();
 
-        return "Object \"HogwartsStudent\":\n{\n" +
+        return "\nHogwarts student: {\n" +
                 name + "\n" +
                 houseInfo + "\n" +
                 prefectInfo + "\n" +
                 teamsInfo + "\n}";
-    }
-
-    public static void main(String[] args) {
-
     }
 }
