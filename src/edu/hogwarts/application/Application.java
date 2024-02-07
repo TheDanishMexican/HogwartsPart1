@@ -8,18 +8,24 @@ import edu.hogwarts.data.House;
 import java.util.List;
 
 public class Application {
-    static void start() {
-        InitializeApp.initializeApp();
+    private InitializeApp initializeApp;
+    private StudentController studentController;
+    private TeacherController teacherController;
+    private UserInterface userInterface;
+    public Application() {
+        this.initializeApp = new InitializeApp();
+        this.studentController = new StudentController();
+        this.teacherController = new TeacherController();
+        this.userInterface = new UserInterface();
     }
 
 
 
 
     public static void main(String[] args) {
-        start();
-        List<House> hogwartsHouses = InitializeApp.getHogwartsHouses();
-        List<HogwartsPerson> hogwartsPeople = InitializeApp.getHogwartsPeople();
+        Application application = new Application();
+        StudentController studentController = application.studentController;
 
-        System.out.println(hogwartsPeople);
+//        studentController.getStudent(1);
     }
 }

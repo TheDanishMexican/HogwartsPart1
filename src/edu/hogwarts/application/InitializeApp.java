@@ -8,11 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InitializeApp {
-    private static List<HogwartsPerson> hogwartsPeople;
-    private static List<House> hogwartsHouses;
+    private List<HogwartsPerson> hogwartsStudents;
+    private List<HogwartsPerson> hogwartsTeachers;
+    private List<House> hogwartsHouses;
 
-    public static void initializeApp() {
-        hogwartsPeople = new ArrayList<>();
+    public InitializeApp() {
+        hogwartsStudents = new ArrayList<>();
+        hogwartsTeachers = new ArrayList<>();
         hogwartsHouses = new ArrayList<>();
 
         House Slytherin = new House("Slytherin", "Salazar Slytherin",
@@ -44,13 +46,13 @@ public class InitializeApp {
         HogwartsStudent ginnyWeasley = new HogwartsStudent("Ginny Weasley", 1992, Gryffindor,
                 true, new ArrayList<>(Arrays.asList("Gryffindor Quidditch Team", "Dumbledore's Army")), 1999, true);
 
-        hogwartsPeople.add(harryPotter);
-        hogwartsPeople.add(hermioneGranger);
-        hogwartsPeople.add(ronWeasley);
-        hogwartsPeople.add(dracoMalfoy);
-        hogwartsPeople.add(lunaLovegood);
-        hogwartsPeople.add(nevilleLongbottom);
-        hogwartsPeople.add(ginnyWeasley);
+        hogwartsStudents.add(harryPotter);
+        hogwartsStudents.add(hermioneGranger);
+        hogwartsStudents.add(ronWeasley);
+        hogwartsStudents.add(dracoMalfoy);
+        hogwartsStudents.add(lunaLovegood);
+        hogwartsStudents.add(nevilleLongbottom);
+        hogwartsStudents.add(ginnyWeasley);
 
         HogwartsTeacher albusDumbledore = new HogwartsTeacher("Albus Dumbledore", Gryffindor, false,
                 EmploymentType.FULL_TIME, LocalDate.of(1900, 1, 1), LocalDate.of(1999, 1, 1)
@@ -68,20 +70,46 @@ public class InitializeApp {
                 EmploymentType.FULL_TIME, LocalDate.of(1974, 1, 1), LocalDate.of(1999, 1, 1)
         );
 
-        hogwartsPeople.add(filiusFlitwick);
-        hogwartsPeople.add(pomonaSprout);
-        hogwartsPeople.add(minervaMcGonagall);
-        hogwartsPeople.add(albusDumbledore);
+        hogwartsTeachers.add(filiusFlitwick);
+        hogwartsTeachers.add(pomonaSprout);
+        hogwartsTeachers.add(minervaMcGonagall);
+        hogwartsTeachers.add(albusDumbledore);
+
+        StudentController studentController = new StudentController();
+        TeacherController teacherController = new TeacherController();
+
+        studentController.getHogwartsStudents(hogwartsStudents);
+        teacherController.getHogwartsTeachers(hogwartsTeachers);
+
+        studentController.createStudent(harryPotter);
+        studentController.createStudent(ronWeasley);
+        studentController.createStudent(hermioneGranger);
+
     }
 
-    public static List<HogwartsPerson> getHogwartsPeople() {
-        return hogwartsPeople;
+    public List<HogwartsPerson> getHogwartsStudents() {
+        return hogwartsStudents;
     }
 
-    public static List<House> getHogwartsHouses() {
+    public void setHogwartsStudents(List<HogwartsPerson> hogwartsStudents) {
+        this.hogwartsStudents = hogwartsStudents;
+    }
+
+    public List<HogwartsPerson> getHogwartsTeachers() {
+        return hogwartsTeachers;
+    }
+
+    public void setHogwartsTeachers(List<HogwartsPerson> hogwartsTeachers) {
+        this.hogwartsTeachers = hogwartsTeachers;
+    }
+
+    public List<House> getHogwartsHouses() {
         return hogwartsHouses;
     }
 
+    public void setHogwartsHouses(List<House> hogwartsHouses) {
+        this.hogwartsHouses = hogwartsHouses;
+    }
 }
 
 
