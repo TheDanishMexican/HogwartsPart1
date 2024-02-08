@@ -26,7 +26,7 @@ public class UserInterface {
 
         while (true) {
             displayMenu();
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter your choice: \n\n\n");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -50,7 +50,15 @@ public class UserInterface {
     private void displayStudents() {
         List<HogwartsPerson> students = studentController.getAllStudents();
 
-        System.out.println("\nList of Hogwarts Students:");
+        System.out.println(String.format("%20s \t\t\t\t| %-17s | %-15s | %-10s | %-46s | %-15s | %-20s\n",
+                "NAME",
+                "ENROLLMENT YEAR",
+                "HOUSE",
+                "PREFECT",
+                "TEAMS",
+                "GRADUATION YEAR",
+                "GRADUATED"
+        ));
         for (HogwartsPerson student : students) {
             System.out.println(student.toString());
         }
@@ -60,7 +68,14 @@ public class UserInterface {
     private void displayTeachers() {
         List<HogwartsPerson> teachers = teacherController.getAllTeachers();
 
-        System.out.println("\nList of Hogwarts Teachers:");
+        System.out.println(String.format("%20s \t\t\t\t| %-17s | %-20s | %-20s | %-20s | %-20s\n",
+                "NAME",
+                "EMPLOYMENT TYPE",
+                "EMPLOYMENT START",
+                "EMPLOYMENT END",
+                "HEAD OF HOUSE",
+                "HOUSE"
+        ));
         for (HogwartsPerson teacher : teachers) {
             System.out.println(teacher.toString());
         }

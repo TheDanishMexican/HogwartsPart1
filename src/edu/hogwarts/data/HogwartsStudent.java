@@ -54,17 +54,17 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
 
     @Override
     public String toString() {
-        String houseInfo = (house != null) ? "House: " + house.getName() : "No House Assigned";
-        String prefectInfo = "Prefect: " + prefect;
-        String teamsInfo = "Teams: " + teams.toString();
-        String name = "Name: " + getFirstName() + " " + getLastName();
-
-        return "\nHogwarts student: {\n" +
-                name + "\n" +
-                houseInfo + "\n" +
-                prefectInfo + "\n" +
-                teamsInfo + "\n}";
+        return String.format("\t\t\t\t%-19s | %-17s | %-15s | %-10s | %-46s | %-15s | %s",
+                getFullName(),
+                getSchoolYear(),
+                getHouseName(),
+                isPrefect(),
+                teams.toString(),
+                getSchoolYear(),
+                isGraduated()
+        );
     }
+
 
     @Override
     public boolean equals(Object o) {

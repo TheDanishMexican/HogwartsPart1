@@ -44,14 +44,15 @@ public class HogwartsTeacher extends Teacher implements HogwartsPerson {
 
     @Override
     public String toString() {
-        String name = getFirstName() + " " + getLastName();
-        return "\nHogwarts teacher: {" +
-                "\n  Name: " + name +
-                "\n  Employment Type: " + getEmploymentType() +
-                "\n  Employment Start: " + getEmploymentStart() +
-                "\n  Employment End: " + getEmploymentEnd() +
-                "\n  Head of House: " + headOfHouse +
-                "\n  House: " + house.getName() +
-                "\n}";
+        return String.format("\t\t\t\t%-19s | %-17s | %-20s | %-20s | %-20s | %s",
+                getName(),
+                getEmploymentType(),
+                getEmploymentStart(),
+                getEmploymentEnd(),
+                headOfHouse,
+                house.getName()
+        );
     }
+
+
 }
