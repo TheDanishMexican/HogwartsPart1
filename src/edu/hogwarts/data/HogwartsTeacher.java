@@ -22,6 +22,10 @@ public class HogwartsTeacher extends Teacher implements HogwartsPerson {
         return house.getName();
     }
 
+    public String getName() {
+        return  getFullName();
+    }
+
     public House getHouse() {
         return house;
     }

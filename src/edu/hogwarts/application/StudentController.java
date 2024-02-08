@@ -1,49 +1,56 @@
 package edu.hogwarts.application;
 
-import edu.generic.Student;
 import edu.hogwarts.data.HogwartsPerson;
 
 import java.util.*;
 
 public class StudentController {
-    private List<HogwartsPerson> hogwartsStudents;
-    private int nextStudentId;
     private Map<Integer, HogwartsPerson> idAndStudentMap;
-    private List<HogwartsPerson> students;
+    private int nextCount = 1;
 
     public StudentController() {
-        this.hogwartsStudents = new ArrayList<>();
-        this.nextStudentId = 1;
         this.idAndStudentMap = new HashMap<>();
-        this.students = new ArrayList<>();
     }
 
     public void createStudent(HogwartsPerson student) {
 
-        students.add(student);
+        idAndStudentMap.put(nextCount, student);
 
-//        System.out.println("Student: " + student + " was added to the HashMap with ID: " + nextStudentId);
+        System.out.println(student.getName() + " was added to the HashMap with ID: " + nextCount);
 
-//        nextStudentId++;
+        nextCount++;
     }
 
-    public void getStudent(int id) {
-        System.out.println(students.get(id));
+    public HogwartsPerson getStudent(int id) {
+        try {
+            HogwartsPerson student = idAndStudentMap.get(id);
+
+            if (student != null) {
+                System.out.println("Retrieved " + student.getName() + " from the HashMap");
+
+                return student;
+            } else throw new IllegalArgumentException();
+        } catch (IllegalArgumentException error) {
+            System.out.println("Student with ID: " + id + " does not exist.");
+            return null;
+        }
     }
 
-    public List<HogwartsPerson> getHogwartsStudents(List<HogwartsPerson> hogwartsStudents) {
-        return hogwartsStudents;
+    public List<HogwartsPerson> getAllStudents() {
+        List<HogwartsPerson> allStudents = new ArrayList<>();
+
+        for (HogwartsPerson student : idAndStudentMap.values()) {
+            allStudents.add(student);
+        }
+
+        return allStudents;
     }
 
-    public void setHogwartsStudents(List<HogwartsPerson> hogwartsStudents) {
-        this.hogwartsStudents = hogwartsStudents;
+    public void updateStudent(int id, HogwartsPerson newStudent) {
+        idAndStudentMap.put(id, newStudent);
     }
 
-    public Map<Integer, HogwartsPerson> getIdAndStudentMap() {
-        return idAndStudentMap;
-    }
-
-    public void setIdAndStudentMap(Map<Integer, HogwartsPerson> idAndStudentMap) {
-        this.idAndStudentMap = idAndStudentMap;
+    public void deleteStudent(int id) {
+        idAndStudentMap.remove(id);
     }
 }

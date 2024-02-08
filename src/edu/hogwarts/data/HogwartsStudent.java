@@ -3,6 +3,7 @@ package edu.hogwarts.data;
 import edu.generic.Student;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HogwartsStudent extends Student implements HogwartsPerson {
     private House house;
@@ -20,6 +21,10 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
 
     public House getHouse() {
         return house;
+    }
+
+    public String getName() {
+        return getFullName();
     }
 
     public void setHouse(House house) {
@@ -59,5 +64,18 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
                 houseInfo + "\n" +
                 prefectInfo + "\n" +
                 teamsInfo + "\n}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HogwartsStudent that = (HogwartsStudent) o;
+        return isPrefect() == that.isPrefect() && Objects.equals(getHouse(), that.getHouse()) && Objects.equals(getTeams(), that.getTeams());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getHouse(), isPrefect(), getTeams());
     }
 }
