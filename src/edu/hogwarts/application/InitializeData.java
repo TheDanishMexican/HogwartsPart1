@@ -5,13 +5,12 @@ import edu.hogwarts.data.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-public class InitializeApp {
+public class InitializeData {
     private StudentController studentController;
     private TeacherController teacherController;
 
-    public InitializeApp(StudentController studentController, TeacherController teacherController) {
+    public InitializeData(StudentController studentController, TeacherController teacherController) {
         this.studentController = studentController;
         this.teacherController = teacherController;
 
@@ -62,6 +61,11 @@ public class InitializeApp {
         studentController.createStudent(dracoMalfoy);
         studentController.createStudent(lunaLovegood);
         studentController.createStudent(nevilleLongbottom);
+
+        teacherController.createTeacher(albusDumbledore);
+        teacherController.createTeacher(pomonaSprout);
+        teacherController.createTeacher(filiusFlitwick);
+        teacherController.createTeacher(minervaMcGonagall);
     }
 }
 
