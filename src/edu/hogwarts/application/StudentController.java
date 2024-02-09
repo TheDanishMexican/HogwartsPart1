@@ -16,7 +16,7 @@ public class StudentController {
 
         idAndStudentMap.put(nextCount, student);
 
-        System.out.println(student.getName() + " was added to the Student HashMap with ID: " + nextCount);
+//        System.out.println(student.getName() + " was added to the Student HashMap with ID: " + nextCount);
 
         nextCount++;
     }

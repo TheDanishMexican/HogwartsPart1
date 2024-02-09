@@ -23,18 +23,18 @@ public class InitializeData {
         House Ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw",
                 new ArrayList<>(Arrays.asList("blue", "silver")));
 
-        HogwartsStudent harryPotter = new HogwartsStudent("Harry Potter", 1991, Gryffindor,
+        HogwartsStudent harryPotter = new HogwartsStudent("Harry Potter", 1923, Gryffindor,
                 true, new ArrayList<>(Arrays.asList("Quidditch", "Dumbledore's Army")), 1998, true);
         HogwartsStudent hermioneGranger = new HogwartsStudent("Hermione Granger", 1991, Gryffindor,
                 false, new ArrayList<>(Arrays.asList("S.P.E.W.", "Dumbledore's Army")), 1998, true);
-        HogwartsStudent ronWeasley = new HogwartsStudent("Ron Weasley", 1991, Gryffindor,
+        HogwartsStudent ronWeasley = new HogwartsStudent("Ron Weasley", 1956, Gryffindor,
                 false, new ArrayList<>(Arrays.asList("Quidditch", "Wizard Chess")), 1998, true);
-        HogwartsStudent dracoMalfoy = new HogwartsStudent("Draco Malfoy", 1991, Slytherin,
+        HogwartsStudent dracoMalfoy = new HogwartsStudent("Draco Malfoy", 1987, Slytherin,
                 false, new ArrayList<>(Arrays.asList("Slytherin Quidditch Team", "Club")), 1998, true);
-        HogwartsStudent lunaLovegood = new HogwartsStudent("Luna Lovegood", 1992, Ravenclaw,
+        HogwartsStudent lunaLovegood = new HogwartsStudent("Luna Lovegood", 1912, Ravenclaw,
                 false, new ArrayList<>(Arrays.asList("The Quibbler Club", "Club")), 1999, true);
         HogwartsStudent nevilleLongbottom = new HogwartsStudent("Neville Longbottom", 1991, Gryffindor,
-                false, new ArrayList<>(Arrays.asList("Herbology Club", "Club")), 1998, true);
+                false, new ArrayList<>(Arrays.asList("Herbology Club", "Club")), 1953, true);
         HogwartsStudent ginnyWeasley = new HogwartsStudent("Ginny Weasley", 1992, Gryffindor,
                 true, new ArrayList<>(Arrays.asList("Gryffindor Quidditch Team", "Dumbledore's Army")), 1999, true);
 

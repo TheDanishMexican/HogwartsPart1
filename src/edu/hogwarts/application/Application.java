@@ -8,12 +8,9 @@ public class Application {
     public Application() {
         this.studentController = new StudentController();
         this.teacherController = new TeacherController();
-        this.userInterface = new UserInterface(studentController, teacherController);
         this.initializeData = new InitializeData(studentController, teacherController);
+        this.userInterface = new UserInterface(studentController, teacherController);
     }
-
-
-
 
     public static void main(String[] args) {
         Application application = new Application();

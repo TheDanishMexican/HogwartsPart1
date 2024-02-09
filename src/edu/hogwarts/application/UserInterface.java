@@ -11,12 +11,15 @@ public class UserInterface {
     private StudentController studentController;
     private TeacherController teacherController;
     private Scanner scanner = new Scanner(System.in);
-
-    private List<Student> allStudents;
+    private DataUtility dataUtility;
+    private List<HogwartsPerson> allStudents;
 
     public UserInterface(StudentController studentController, TeacherController teacherController) {
         this.studentController = studentController;
         this.teacherController = teacherController;
+        this.allStudents = new ArrayList<>(studentController.getAllStudents());
+
+        this.dataUtility = new DataUtility(allStudents);
     }
 
     public void displayMenu() {
@@ -51,8 +54,7 @@ public class UserInterface {
         }
     }
 
-    private void displayStudents() {
-        List<HogwartsPerson> students = studentController.getAllStudents();
+    public void displayStudents(List<HogwartsPerson> students) {
 
         System.out.println(String.format("%20s \t\t\t\t| %-17s | %-15s | %-10s | %-46s | %-15s | %-20s\n",
                 "NAME",
@@ -144,13 +146,14 @@ public class UserInterface {
 
             switch (choice) {
                 case 1:
-                    displayStudents();
+                    displayStudents(allStudents);
                     break;
                 case 2:
-                    //code to sort teachers
+                    displayStudents(dataUtility.getNamesAscending());
+//                    displayStudents(dataUtility.getNamesDescending());
                     break;
                 case 3:
-                    //code to filter teachers
+                    //code to filter students
                     break;
                 case 4:
                     start();

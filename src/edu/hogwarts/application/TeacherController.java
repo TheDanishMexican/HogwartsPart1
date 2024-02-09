@@ -14,7 +14,7 @@ public class TeacherController {
 
     public void createTeacher(HogwartsPerson teacher) {
         idAndTeacherMap.put(nextCount, teacher);
-        System.out.println(teacher.getName() + " was added to the Teacher HashMap with ID: " + nextCount);
+//        System.out.println(teacher.getName() + " was added to the Teacher HashMap with ID: " + nextCount);
         nextCount++;
     }
 
