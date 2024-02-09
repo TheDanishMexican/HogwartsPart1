@@ -8,40 +8,26 @@ import java.util.Comparator;
 import java.util.List;
 
 public class DataUtility {
-    private List<HogwartsPerson> namesDescending;
-    private List<HogwartsPerson> namesAscending;
-    private List<HogwartsPerson> allStudents;
-
-    public DataUtility(List<HogwartsPerson> students) {
-        this.allStudents = new ArrayList<>(students);
-        this.namesDescending = sortStudentNamesDescending(getAllStudents());
-        this.namesAscending =  sortStudentNamesAscending(getAllStudents());
+    List<HogwartsPerson> namesDescending;
+    List<HogwartsPerson> namesAscending;
+    public DataUtility(List<HogwartsPerson> hogwartsPeople) {
+        ArrayList<HogwartsPerson> people = new ArrayList<>(hogwartsPeople);
+        this.namesAscending = new ArrayList<>(sortNamesAscending(people));
+        this.namesDescending = new ArrayList<>(sortNamesDescending(people));
     }
-    public List<HogwartsPerson> sortStudentNamesAscending(List<HogwartsPerson> students) {
-        students.sort(Comparator.comparing(HogwartsPerson::getName));
+    public List<HogwartsPerson> sortNamesAscending(List<HogwartsPerson> hogwartsPeople) {
+        hogwartsPeople.sort(Comparator.comparing(HogwartsPerson::getName));
 
-        return new ArrayList<>(students);
+        return new ArrayList<>(hogwartsPeople);
     }
 
-    public List<HogwartsPerson> sortStudentNamesDescending(List<HogwartsPerson> students) {
-        students.sort(Comparator.comparing(HogwartsPerson::getName).reversed());
+    public List<HogwartsPerson> sortNamesDescending(List<HogwartsPerson> hogwartsPeople) {
+        hogwartsPeople.sort(Comparator.comparing(HogwartsPerson::getName).reversed());
 
-        return new ArrayList<>(students);
+        return new ArrayList<>(hogwartsPeople);
     }
 
-//    public List<HogwartsPerson> generalizedSort(Comparator comparator) {
-//        List<HogwartsPerson> sortedList = new ArrayList<>(allStudents);
-//
-//        sortedList.sort(comparator);
-//
-//        return sortedList;
-//    }
 
-    public List<HogwartsPerson> sortStudentAgesAscending(List<HogwartsPerson> students) {
-        students.sort(Comparator.comparing(HogwartsPerson::getHouseName));
-
-        return students;
-    }
 
     public List<HogwartsPerson> getNamesDescending() {
         return namesDescending;
@@ -59,11 +45,14 @@ public class DataUtility {
         this.namesAscending = namesAscending;
     }
 
-    public List<HogwartsPerson> getAllStudents() {
-        return allStudents;
-    }
+    //Generalized Sort below - IF NEEDED
 
-    public void setAllStudents(List<HogwartsPerson> allStudents) {
-        this.allStudents = allStudents;
-    }
+//    public List<HogwartsPerson> generalizedSort(Comparator comparator) {
+//        List<HogwartsPerson> sortedList = new ArrayList<>(allStudents);
+//
+//        sortedList.sort(comparator);
+//
+//        return sortedList;
+//    }
+
 }

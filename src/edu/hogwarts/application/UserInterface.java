@@ -13,20 +13,29 @@ public class UserInterface {
     private Scanner scanner = new Scanner(System.in);
     private DataUtility dataUtility;
     private List<HogwartsPerson> allStudents;
+    private List<HogwartsPerson> allTeachers;
+
+    private List<HogwartsPerson> hogwartsPeople;
+    private String studentType = "student";
+    private String teacherType = "teacher";
 
     public UserInterface(StudentController studentController, TeacherController teacherController) {
         this.studentController = studentController;
         this.teacherController = teacherController;
+        this.allTeachers = new ArrayList<>(teacherController.getAllTeachers());
         this.allStudents = new ArrayList<>(studentController.getAllStudents());
-
-        this.dataUtility = new DataUtility(allStudents);
+        this.hogwartsPeople = new ArrayList<>();
+        this.hogwartsPeople.addAll(allStudents);
+        this.hogwartsPeople.addAll(allTeachers);
+        this.dataUtility = new DataUtility(hogwartsPeople);
     }
 
     public void displayMenu() {
         System.out.println("\n\n\nWelcome to the Hogwarts Information System!");
-        System.out.println("1. View Student options");
-        System.out.println("2. View Teacher options");
-        System.out.println("3. Exit");
+        System.out.println("1. View Hogwarts people");
+        System.out.println("2. Sort view");
+        System.out.println("3. Filter view");
+        System.out.println("4. Exit");
     }
 
     public void start() {
@@ -40,136 +49,133 @@ public class UserInterface {
 
             switch (choice) {
                 case 1:
-                    studentsMenu();
+                    displayHogwartsPerson(hogwartsPeople);
                     break;
                 case 2:
-                    teachersMenu();
+                    sortMenu();
                     break;
                 case 3:
+                    filterMenu();
+                    break;
+                case 4:
                     System.out.println("Exiting the Hogwarts Information System. Goodbye!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+            }
+        }
+    }
+
+    public void displayHogwartsPerson(List<HogwartsPerson> people) {
+        System.out.println(String.format("%20s \t\t\t\t| %-17s | %-15s | %-10s | %-46s | %-15s |\n",
+                "FIRST NAME",
+                "MIDDLE NAME",
+                "LAST NAME",
+                "AGE",
+                "HOUSE",
+                "ROLE"
+        ));
+
+        for (HogwartsPerson person : people) {
+            System.out.println(person.toString());
+        }
+    }
+
+    public void displaySortMenu() {
+        System.out.println("SORT BY:");
+        System.out.println("1. Name");
+        System.out.println("2. Enrollment Year");
+        System.out.println("3. House");
+        System.out.println("4. Graduation Year");
+        System.out.println("5. Return to start");
+        System.out.print("Enter your choice: \n\n\n");
+    }
+
+    public void displayFilterMenu() {
+        System.out.println("FILTER BY:");
+        System.out.println("1. House");
+        System.out.println("2. Type");
+        System.out.println("3. Return to start");
+        System.out.print("Enter your choice: \n\n\n");
+    }
+
+    public void displayAscDescMenu() {
+        System.out.println("1. Ascending");
+        System.out.println("2. Descending");
+        System.out.println("3. Return to start");
+        System.out.print("Enter your choice: \n\n\n");
+    }
+
+    public void ascDescMenu() {
+        while (true) {
+            displayAscDescMenu();
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    displayHogwartsPerson(dataUtility.getNamesAscending());
+                    break;
+                case 2:
+                    displayHogwartsPerson(dataUtility.getNamesDescending());
+                    break;
+                case 3:
+                    start();
                     return;
                 default:
-                    System.out.println("Invalid choice. Please enter a valid option.");
+                    System.out.println("Invalid choice. Try again");
             }
         }
     }
 
-    public void displayStudents(List<HogwartsPerson> students) {
-
-        System.out.println(String.format("%20s \t\t\t\t| %-17s | %-15s | %-10s | %-46s | %-15s | %-20s\n",
-                "NAME",
-                "ENROLLMENT YEAR",
-                "HOUSE",
-                "PREFECT",
-                "TEAMS",
-                "GRADUATION YEAR",
-                "GRADUATED"
-        ));
-        for (HogwartsPerson student : students) {
-            System.out.println(student.toString());
-        }
-        System.out.println();
-    }
-
-    private void displayTeachers() {
-        List<HogwartsPerson> teachers = teacherController.getAllTeachers();
-
-        System.out.println(String.format("%20s \t\t\t\t| %-17s | %-20s | %-20s | %-20s | %-20s\n",
-                "NAME",
-                "EMPLOYMENT TYPE",
-                "EMPLOYMENT START",
-                "EMPLOYMENT END",
-                "HEAD OF HOUSE",
-                "HOUSE"
-        ));
-        for (HogwartsPerson teacher : teachers) {
-            System.out.println(teacher.toString());
-        }
-        System.out.println();
-    }
-
-    private void displayTeachersMenu() {
-        System.out.println("\n\n\nWelcome to the teachers view menu!");
-        System.out.println("1. View Teachers");
-        System.out.println("2. Sort Teachers");
-        System.out.println("3. Filter Teachers");
-        System.out.println("4. Go back");
-        System.out.println("5. Exit system");
-    }
-
-    private void displayStudentsMenu() {
-        System.out.println("\n\n\nWelcome to the students view menu!");
-        System.out.println("1. View Students");
-        System.out.println("2. Sort Students");
-        System.out.println("3. Filter Students");
-        System.out.println("4. Go back");
-        System.out.println("5. Exit system");
-    }
-
-    private void teachersMenu() {
+    public void sortMenu() {
         while (true) {
-            displayTeachersMenu();
-            System.out.println("Enter your choice: ");
-
+            displaySortMenu();
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    displayTeachers();
+                    ascDescMenu();
                     break;
                 case 2:
-                    //code to sort teachers
+                    ascDescMenu();
                     break;
                 case 3:
-                    //code to filter teachers
+                    ascDescMenu();
                     break;
                 case 4:
-                    start();
+                    ascDescMenu();
                     break;
                 case 5:
-                    System.out.println("Exiting the Hogwarts Information System. Goodbye!");
-                    System.exit(0);
+                    start();
+                    return;
                 default:
-                    System.out.println("Invalid choice. Please enter a valid option.");
+                    System.out.println("Invalid input. Try again");
             }
         }
     }
 
-    private void studentsMenu() {
+    public void filterMenu() {
         while (true) {
-            displayStudentsMenu();
-            System.out.println("Enter your choice: ");
-
+            displayFilterMenu();
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    displayStudents(allStudents);
                     break;
                 case 2:
-                    displayStudents(dataUtility.getNamesAscending());
-//                    displayStudents(dataUtility.getNamesDescending());
                     break;
                 case 3:
-                    //code to filter students
-                    break;
-                case 4:
                     start();
-                    break;
-                case 5:
-                    System.out.println("Exiting the Hogwarts Information System. Goodbye!");
-                    System.exit(0);
+                    return;
                 default:
-                    System.out.println("Invalid choice. Please enter a valid option.");
+                    System.out.println("Invalid input. Try again");
             }
         }
     }
 
-    private void sortStudents() {
-
-    }
 
 }
 

@@ -3,21 +3,41 @@ package edu.hogwarts.data;
 import edu.generic.Teacher;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class HogwartsTeacher extends Teacher implements HogwartsPerson {
     House house;
     boolean headOfHouse;
 
+    private LocalDate dateOfBirth;
+
     public HogwartsTeacher() {}
 
-    public HogwartsTeacher(String name, House house, boolean headOfHouse, EmploymentType employmentType,
+    public HogwartsTeacher(LocalDate dateOfBirth, String name, House house, boolean headOfHouse, EmploymentType employmentType,
                            LocalDate employmentStart, LocalDate employmentEnd) {
 
         super(name, employmentType, employmentStart, employmentEnd);
         this.house = house;
         this.headOfHouse = headOfHouse;
+        this.dateOfBirth = dateOfBirth;
     }
 
+    @Override
+    public String getRole() {
+        return "Teacher";
+    }
+
+    public int getAge() {
+
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate the period between the birthdate and current date
+        Period period = Period.between(dateOfBirth, currentDate);
+
+        // Extract the years from the period
+        return period.getYears();
+    }
     public String getHouseName() {
         return house.getName();
     }
@@ -44,13 +64,13 @@ public class HogwartsTeacher extends Teacher implements HogwartsPerson {
 
     @Override
     public String toString() {
-        return String.format("\t\t\t\t%-19s | %-17s | %-20s | %-20s | %-20s | %s",
-                getName(),
-                getEmploymentType(),
-                getEmploymentStart(),
-                getEmploymentEnd(),
-                headOfHouse,
-                house.getName()
+        return  String.format("%20s \t\t\t\t| %-17s | %-15s | %-10s | %-46s | %-15s |\n",
+                getFirstName(),
+                getMiddleName(),
+                getLastName(),
+                getAge(),
+                getHouseName(),
+                getRole()
         );
     }
 

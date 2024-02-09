@@ -23,34 +23,34 @@ public class InitializeData {
         House Ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw",
                 new ArrayList<>(Arrays.asList("blue", "silver")));
 
-        HogwartsStudent harryPotter = new HogwartsStudent("Harry Potter", 1923, Gryffindor,
+        HogwartsStudent harryPotter = new HogwartsStudent(LocalDate.of(1996, 12, 12),"Harry Potter", 1923, Gryffindor,
                 true, new ArrayList<>(Arrays.asList("Quidditch", "Dumbledore's Army")), 1998, true);
-        HogwartsStudent hermioneGranger = new HogwartsStudent("Hermione Granger", 1991, Gryffindor,
+        HogwartsStudent hermioneGranger = new HogwartsStudent(LocalDate.of(1996, 4, 4),"Hermione Granger", 1991, Gryffindor,
                 false, new ArrayList<>(Arrays.asList("S.P.E.W.", "Dumbledore's Army")), 1998, true);
-        HogwartsStudent ronWeasley = new HogwartsStudent("Ron Weasley", 1956, Gryffindor,
+        HogwartsStudent ronWeasley = new HogwartsStudent(LocalDate.of(1994, 3, 19),"Ron Weasley", 1956, Gryffindor,
                 false, new ArrayList<>(Arrays.asList("Quidditch", "Wizard Chess")), 1998, true);
-        HogwartsStudent dracoMalfoy = new HogwartsStudent("Draco Malfoy", 1987, Slytherin,
+        HogwartsStudent dracoMalfoy = new HogwartsStudent(LocalDate.of(1995, 8, 21),"Draco Malfoy", 1987, Slytherin,
                 false, new ArrayList<>(Arrays.asList("Slytherin Quidditch Team", "Club")), 1998, true);
-        HogwartsStudent lunaLovegood = new HogwartsStudent("Luna Lovegood", 1912, Ravenclaw,
+        HogwartsStudent lunaLovegood = new HogwartsStudent(LocalDate.of(1994, 10, 30),"Luna Lovegood", 1912, Ravenclaw,
                 false, new ArrayList<>(Arrays.asList("The Quibbler Club", "Club")), 1999, true);
-        HogwartsStudent nevilleLongbottom = new HogwartsStudent("Neville Longbottom", 1991, Gryffindor,
+        HogwartsStudent nevilleLongbottom = new HogwartsStudent(LocalDate.of(1998, 3, 9),"Neville Longbottom", 1991, Gryffindor,
                 false, new ArrayList<>(Arrays.asList("Herbology Club", "Club")), 1953, true);
-        HogwartsStudent ginnyWeasley = new HogwartsStudent("Ginny Weasley", 1992, Gryffindor,
+        HogwartsStudent ginnyWeasley = new HogwartsStudent(LocalDate.of(1999, 2, 12),"Ginny Weasley", 1992, Gryffindor,
                 true, new ArrayList<>(Arrays.asList("Gryffindor Quidditch Team", "Dumbledore's Army")), 1999, true);
 
-        HogwartsTeacher albusDumbledore = new HogwartsTeacher("Albus Dumbledore", Gryffindor, false,
+        HogwartsTeacher albusDumbledore = new HogwartsTeacher(LocalDate.of(1890, 4, 4),"Albus Dumbledore", Gryffindor, false,
                 EmploymentType.FULL_TIME, LocalDate.of(1900, 1, 1), LocalDate.of(1999, 1, 1)
         );
         HogwartsTeacher minervaMcGonagall = new HogwartsTeacher(
-                "Minerva McGonagall", Gryffindor, true,
+                LocalDate.of(1933, 11, 2),"Minerva McGonagall", Gryffindor, true,
                 EmploymentType.FULL_TIME, LocalDate.of(1956, 1, 1), LocalDate.of(1999, 1, 1)
         );
         HogwartsTeacher pomonaSprout = new HogwartsTeacher(
-                "Pomona Sprout", Hufflepuff, true,
+                LocalDate.of(1944, 10, 10),"Pomona Sprout", Hufflepuff, true,
                 EmploymentType.FULL_TIME, LocalDate.of(1967, 1, 1), LocalDate.of(1999, 1, 1)
         );
         HogwartsTeacher filiusFlitwick = new HogwartsTeacher(
-                "Filius Flitwick", Ravenclaw, true,
+                LocalDate.of(1939, 6, 29),"Filius Flitwick", Ravenclaw, true,
                 EmploymentType.FULL_TIME, LocalDate.of(1974, 1, 1), LocalDate.of(1999, 1, 1)
         );
 
