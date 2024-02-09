@@ -66,6 +66,7 @@ public class InitializeData {
         teacherController.createTeacher(pomonaSprout);
         teacherController.createTeacher(filiusFlitwick);
         teacherController.createTeacher(minervaMcGonagall);
+        //test
     }
 }
 
