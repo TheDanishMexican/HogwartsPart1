@@ -1,7 +1,9 @@
 package edu.hogwarts.application;
 
+import edu.generic.Student;
 import edu.hogwarts.data.HogwartsPerson;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,6 +11,8 @@ public class UserInterface {
     private StudentController studentController;
     private TeacherController teacherController;
     private Scanner scanner = new Scanner(System.in);
+
+    private List<Student> allStudents;
 
     public UserInterface(StudentController studentController, TeacherController teacherController) {
         this.studentController = studentController;
@@ -160,10 +164,9 @@ public class UserInterface {
         }
     }
 
+    private void sortStudents() {
 
-
-
-
+    }
 
 }
 
