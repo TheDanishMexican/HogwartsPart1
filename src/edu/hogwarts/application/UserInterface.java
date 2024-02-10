@@ -4,6 +4,7 @@ import edu.generic.Student;
 import edu.hogwarts.data.HogwartsPerson;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +15,6 @@ public class UserInterface {
     private DataUtility dataUtility;
     private List<HogwartsPerson> allStudents;
     private List<HogwartsPerson> allTeachers;
-
     private List<HogwartsPerson> hogwartsPeople;
     private String studentType = "student";
     private String teacherType = "teacher";
@@ -106,7 +106,7 @@ public class UserInterface {
         System.out.print("Enter your choice: \n\n\n");
     }
 
-    public void ascDescMenu() {
+    public void ascDescMenu(String sortType) {
         while (true) {
             displayAscDescMenu();
             int choice = scanner.nextInt();
@@ -114,10 +114,10 @@ public class UserInterface {
 
             switch (choice) {
                 case 1:
-                    displayHogwartsPerson(dataUtility.getNamesAscending());
+                    displayHogwartsPerson(dataUtility.getAscSortingMethodBySortingType(sortType));
                     break;
                 case 2:
-                    displayHogwartsPerson(dataUtility.getNamesDescending());
+                    displayHogwartsPerson(dataUtility.getDescSortingMethodBySortingType(sortType));
                     break;
                 case 3:
                     start();
@@ -136,16 +136,16 @@ public class UserInterface {
 
             switch (choice) {
                 case 1:
-                    ascDescMenu();
+                    ascDescMenu("name");
                     break;
                 case 2:
-                    ascDescMenu();
+                    ascDescMenu("enrollment year");
                     break;
                 case 3:
-                    ascDescMenu();
+                    ascDescMenu("house");
                     break;
                 case 4:
-                    ascDescMenu();
+                    ascDescMenu("graduation year");
                     break;
                 case 5:
                     start();

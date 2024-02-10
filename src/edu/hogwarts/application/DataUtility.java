@@ -4,30 +4,53 @@ import edu.hogwarts.data.HogwartsPerson;
 import edu.hogwarts.data.HogwartsStudent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 public class DataUtility {
     List<HogwartsPerson> namesDescending;
     List<HogwartsPerson> namesAscending;
+
     public DataUtility(List<HogwartsPerson> hogwartsPeople) {
         ArrayList<HogwartsPerson> people = new ArrayList<>(hogwartsPeople);
         this.namesAscending = new ArrayList<>(sortNamesAscending(people));
         this.namesDescending = new ArrayList<>(sortNamesDescending(people));
     }
+
+
+    public List<HogwartsPerson> getAscSortingMethodBySortingType(String sortType) {
+        switch(sortType) {
+            case "name":
+                return getNamesAscending();
+            default:
+                System.out.println("something went wrong");
+                break;
+        }
+        return null;
+    }
+
+    public List<HogwartsPerson> getDescSortingMethodBySortingType(String sortType) {
+        switch(sortType) {
+            case "name":
+                return getNamesDescending();
+            default:
+                System.out.println("something went wrong");
+                break;
+        }
+        return null;
+    }
+
     public List<HogwartsPerson> sortNamesAscending(List<HogwartsPerson> hogwartsPeople) {
         hogwartsPeople.sort(Comparator.comparing(HogwartsPerson::getName));
 
         return new ArrayList<>(hogwartsPeople);
     }
-
     public List<HogwartsPerson> sortNamesDescending(List<HogwartsPerson> hogwartsPeople) {
         hogwartsPeople.sort(Comparator.comparing(HogwartsPerson::getName).reversed());
 
         return new ArrayList<>(hogwartsPeople);
     }
-
-
 
     public List<HogwartsPerson> getNamesDescending() {
         return namesDescending;
