@@ -71,7 +71,6 @@ public class DataUtility {
         return null;
     }
 
-
     public List<HogwartsPerson> filterRoleBy(String filterType) {
         List<HogwartsPerson> copy = new ArrayList<>(people);
 
