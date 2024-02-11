@@ -1,10 +1,8 @@
 package edu.hogwarts.application;
 
 import edu.hogwarts.data.HogwartsPerson;
-import edu.hogwarts.data.HogwartsStudent;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,10 +23,11 @@ public class DataUtility {
     private List<HogwartsPerson> filteredRavenclaw;
     private List<HogwartsPerson> filteredSlytherin;
     private List<HogwartsPerson> filteredHufflepuff;
+    private List<HogwartsPerson> people;
 
 
     public DataUtility(List<HogwartsPerson> hogwartsPeople) {
-        ArrayList<HogwartsPerson> people = new ArrayList<>(hogwartsPeople);
+        this.people = new ArrayList<>(hogwartsPeople);
         this.namesAscending = new ArrayList<>(sortNamesAscending(people));
         this.namesDescending = new ArrayList<>(sortNamesDescending(people));
         this.agesAscending = new ArrayList<>(sortAgesAscending(people));
@@ -37,16 +36,16 @@ public class DataUtility {
         this.houseDescending = new ArrayList<>(sortHouseDescending(people));
         this.roleAscending = new ArrayList<>(sortRoleAscending(people));
         this.roleDescending = new ArrayList<>(sortRoleDescending(people));
-        this.filteredTeachers = filterRoleBy(people, "Teacher");
-        this.filteredStudents = filterRoleBy(people, "Student");
-        this.filteredGryffindor = filterHouseBy(people, "Gryffindor");
-        this.filteredHufflepuff = filterHouseBy(people, "Hufflepuff");
-        this.filteredRavenclaw = filterHouseBy(people, "Ravenclaw");
-        this.filteredSlytherin = filterHouseBy(people, "Slytherin");
+        this.filteredTeachers = filterRoleBy("teacher");
+        this.filteredStudents = filterRoleBy("student");
+        this.filteredGryffindor = filterHouseBy("Gryffindor");
+        this.filteredHufflepuff = filterHouseBy("Hufflepuff");
+        this.filteredRavenclaw = filterHouseBy("Ravenclaw");
+        this.filteredSlytherin = filterHouseBy("Slytherin");
     }
 
-    public List<HogwartsPerson> filterHouseBy(List<HogwartsPerson> hogwartsPeople, String house) {
-        List<HogwartsPerson> copy = new ArrayList<>(hogwartsPeople);
+    public List<HogwartsPerson> filterHouseBy(String house) {
+        List<HogwartsPerson> copy = new ArrayList<>(people);
 
         switch (house) {
             case "Gryffindor":
@@ -66,15 +65,16 @@ public class DataUtility {
                         .filter(person -> "Ravenclaw".equals(person.getHouseName()))
                         .collect(Collectors.toList());
             default:
-                System.out.println("Something went wrong");
+                System.out.println("Something went wrong filterHouseBy");
                 break;
         }
         return null;
     }
 
 
-    public List<HogwartsPerson> filterRoleBy(List<HogwartsPerson> hogwartsPeople, String filterType) {
-        List<HogwartsPerson> copy = new ArrayList<>(hogwartsPeople);
+    public List<HogwartsPerson> filterRoleBy(String filterType) {
+        List<HogwartsPerson> copy = new ArrayList<>(people);
+
         switch (filterType) {
             case "teacher":
                 return copy.stream()
@@ -85,11 +85,12 @@ public class DataUtility {
                         .filter(person -> "Student".equals(person.getRole()))
                         .collect(Collectors.toList());
             default:
-                System.out.println("Something went wrong");
+                System.out.println("Something went wrong filterroleby " + filterType);
                 break;
         }
         return null;
     }
+
     public List<HogwartsPerson> getAscSortingMethodBySortingType(String sortType) {
         switch(sortType) {
             case "name":

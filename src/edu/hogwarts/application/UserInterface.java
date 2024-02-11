@@ -182,11 +182,10 @@ public class UserInterface {
 
             switch(choice) {
                 case 1:
-                    displayHogwartsPerson();
-                    dataUtility.filterRoleBy("teacher");
+                    displayHogwartsPerson(dataUtility.getFilteredTeachers());
                     break;
                 case 2:
-//                    dataUtility.filterRoleBy("student");
+                    displayHogwartsPerson(dataUtility.getFilteredStudents());
                     break;
                 case 3:
                     start();
@@ -203,16 +202,16 @@ public class UserInterface {
 
             switch (choice) {
                 case 1:
-                    dataUtility.filterHouseBy("gryffindor");
+                    displayHogwartsPerson(dataUtility.getFilteredGryffindor());
                     break;
                 case 2:
-                    dataUtility.filterHouseBy("ravenclaw");
+                    displayHogwartsPerson(dataUtility.getFilteredRavenclaw());
                     break;
                 case 3:
-                    dataUtility.filterHouseBy("slytherin");
+                    displayHogwartsPerson(dataUtility.getFilteredSlytherin());
                     break;
                 case 4:
-                    dataUtility.filterHouseBy("hufflepuff");
+                    displayHogwartsPerson(dataUtility.getFilteredHufflepuff());
                     break;
                 case 5:
                     start();
